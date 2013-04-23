@@ -1,0 +1,47 @@
+<article class="post post__link">
+
+    {block:Date}
+    <header class="post_header">
+        <div class="post_date">
+            <span class="post_date_day">{DayOfMonthWithZero}</span><span class="post_date_day_delim">/</span>{MonthNumber}/{Year}
+        </div>
+    </header>
+    {/block:Date}
+
+    <div class="post_content">
+        {block:Title}
+        {block:IndexPage}
+        <h2 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h2>
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+        <h1 class="post_title post_title__link"><a href="{URL}" class="link" {Target}>{Name}</a></h1>
+        {/block:PermalinkPage}
+        {/block:Title}
+
+        {block:Description}
+        {Description}
+        {/block:Description}
+    </div>
+
+    <div class="post_info">
+        {block:IndexPage}
+        {block:IfDisqusShortname}
+        <a href="{Permalink}#disqus_thread"  class="post_comments" title="Comment"></a>
+        {/block:IfDisqusShortname}
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+        <div class="post_likes">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="slavko">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        {/block:PermalinkPage}
+
+        {block:HasTags}
+        <ul class="post_tags">
+            {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+        </ul>
+        {/block:HasTags}
+    </div>
+</article>

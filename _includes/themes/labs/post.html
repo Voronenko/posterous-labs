@@ -1,0 +1,67 @@
+<article class="post post__text">
+
+    <header class="post_header">
+        <h2 class="post_title"><a href="{Permalink}">{{ page.title }} </a></h2>
+
+
+        <div class="post_date">
+            <span class="post_date_day">
+                {{ page.date | date: "%d" }}
+            </span>
+            <span class="post_date_day_delim">/</span>
+            {{ page.date | date: "%B" }}/{{ page.date | date: "%Y" }}
+        </div>
+
+    </header>
+
+    <div class="post_content">  {{ content }} </div>
+
+    {% unless page.categories == empty %}
+    <ul class="post_tags">
+        {% assign categories_list = page.categories %}
+        {% include JB/categories_list %}
+    </ul>
+    {% endunless %}
+
+    {% unless page.tags == empty %}
+    <ul class="post_tags">
+        {% assign tags_list = page.tags %}
+        {% include JB/tags_list %}
+    </ul>
+    {% endunless %}
+
+    <div class="post_info">
+        {block:IndexPage}
+        {block:IfDisqusShortname}
+        <a href="{Permalink}#disqus_thread"  class="post_comments" title="Comment"></a>
+        {/block:IfDisqusShortname}
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+        <div class="post_likes">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="slavko">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        {/block:PermalinkPage}
+
+    </div>
+</article>
+
+<nav class="pagination" role="navigation">
+
+    {% if page.previous %}
+    <a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}" class="older">&laquo; Older Entries</a>
+    {% else %}
+    <a href="#"  class="older disabled">&laquo; Older Entries</a>
+    {% endif %}
+
+
+    {% if page.next %}
+    <a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}" class="newer">Newer  &raquo;</a>
+    {% else %}
+    <a href="#"  class="newer">Newer  &raquo;</a>
+    {% endif %}
+
+</nav>
+
+{% include JB/comments %}

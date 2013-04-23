@@ -1,0 +1,29 @@
+<article class="post post__quote">
+
+    {block:Date}
+    <header class="post_header">
+        <div class="post_date">
+            <span class="post_date_day">{DayOfMonthWithZero}</span><span class="post_date_day_delim">/</span>{MonthNumber}/{Year}
+        </div>
+    </header>
+    {/block:Date}
+
+    <div class="post_content">
+        {block:Source}{Source}{block:Source}
+        <blockquote>{Quote}</blockquote>
+    </div>
+
+    <div class="post_info">
+        {block:IndexPage}
+        {block:IfDisqusShortname}
+        <a href="{Permalink}#disqus_thread"  class="post_comments" title="Comment"></a>
+        {/block:IfDisqusShortname}
+        {/block:IndexPage}
+
+        {block:HasTags}
+        <ul class="post_tags">
+            {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+        </ul>
+        {/block:HasTags}
+    </div>
+</article>

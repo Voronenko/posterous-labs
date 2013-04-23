@@ -1,0 +1,39 @@
+<article class="post post__video">
+
+    {block:Date}
+    <header class="post_header">
+        <div class="post_date">
+            <span class="post_date_day">{DayOfMonthWithZero}</span><span class="post_date_day_delim">/</span>{MonthNumber}/{Year}
+        </div>
+    </header>
+    {/block:Date}
+
+    <div class="post_content">
+        <div class="post_video">{Video-500}</div>
+
+        {block:Caption}
+        <div class="post_caption">{Caption}</div>
+        {/block:Caption}
+    </div>
+
+    <div class="post_info">
+        {block:IndexPage}
+        {block:IfDisqusShortname}
+        <a href="{Permalink}#disqus_thread"  class="post_comments" title="Comment"></a>
+        {/block:IfDisqusShortname}
+        {/block:IndexPage}
+
+        {block:PermalinkPage}
+        <div class="post_likes">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="slavko">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+        {/block:PermalinkPage}
+
+        {block:HasTags}
+        <ul class="post_tags">
+            {block:Tags}<li><a href="{TagURL}">{Tag}</a></li>{/block:Tags}
+        </ul>
+        {/block:HasTags}
+    </div>
+</article>
