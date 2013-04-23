@@ -31,18 +31,13 @@
     {% endunless %}
 
     <div class="post_info">
-        {block:IndexPage}
-        {block:IfDisqusShortname}
-        <a href="{Permalink}#disqus_thread"  class="post_comments" title="Comment"></a>
-        {/block:IfDisqusShortname}
-        {/block:IndexPage}
 
-        {block:PermalinkPage}
+       {% include JB/comments %}
+
         <div class="post_likes">
             <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="slavko">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         </div>
-        {/block:PermalinkPage}
 
     </div>
 </article>
@@ -64,4 +59,4 @@
 
 </nav>
 
-{% include JB/comments %}
+
