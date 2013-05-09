@@ -1,9 +1,8 @@
-
 ---
 layout: post
 category : miscellanous
 tagline: "Mysterious google two step authentication - in debug"
-tags : [google,php,twofactor authentication, RFC6238]
+tags : [google, php, twofactor authentication, RFC6238]
 ---
 {% include JB/setup %}
 
@@ -76,12 +75,12 @@ Let us convert it to 6 digit sequence:
 
  Step А: convert into hex  array
 
-<pre><code class="php">
+<pre><code>
 Array ( [0] => af [1] => 2b [2] => 88 [3] => 04 [4] => 8d [5] => c8 [6] => 97 [7] => 9b [8] => 52 [9] => 8a [10] => f4 [11] => e3 [12] => 70 [13] => 85 [14] => 06 [15] => 1d [16] => 88 [17] => aa [18] => aa [19] => a5 )
 </code></pre>
 Step B Transform each hex in the array to it's decimal form
 
-<pre><code class="php">
+<pre><code >
 Array ( [0] => 175 [1] => 43 [2] => 136 [3] => 4 [4] => 141 [5] => 200 [6] => 151 [7] => 155 [8] => 82 [9] => 138 [10] => 244 [11] => 227 [12] => 112 [13] => 133 [14] => 6 [15] => 29 [16] => 136 [17] => 170 [18] => 170 [19] => 165 )
 </code></pre>
 
@@ -89,7 +88,7 @@ Step C  Take 19-th array element (in this case 165)
 
 and perform bitwise operator & on mask 0xf   - we receive 5 for current example.
 
-<pre><code class="php">
+<pre><code >
 
 (hmac_result[offset+0] & 0x7f) << 24 = 200& 0x7f) << 24 = 11001000&100100111<< 24 = 1001000 << 24 =1001000000000000000000000000000=1207959552
 
