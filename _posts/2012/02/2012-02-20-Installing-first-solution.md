@@ -28,3 +28,20 @@ Steps:
 8) Perform push to openshift git repository.
 
 9) Briefly look through initialization scripts output, fill up initial redmine wizard and we are done - redmine on your own domain in 12 minutes!
+
+<div class='p_embed p_image_embed'>
+<img src='/image/2012/02/38120888-ScreenHunter_31_20120211.jpg'>
+<img src='/image/2012/02/38120890-ScreenHunter_32_20120211.jpg'>
+<img src='/image/2012/02/38120900-ScreenHunter_41_20120211.jpg'>
+<img src='/image/2012/02/38120891-ScreenHunter_33_20120211.jpg'>
+<img src='/image/2012/02/38120904-ScreenHunter_42_20120211.jpg'>
+<img src='/image/2012/02/38120893-ScreenHunter_34_20120211.jpg'>
+<img src='/image/2012/02/38120894-ScreenHunter_35_20120211.jpg'>
+<img src='/image/2012/02/38120897-ScreenHunter_38_20120211.jpg'>
+<img src='/image/2012/02/38120896-ScreenHunter_37_20120211.jpg'>
+<img src='/image/2012/02/38120898-ScreenHunter_40_20120211.jpg'>
+<img src='/image/2012/02/38120906-ScreenHunter_43_20120211.jpg'>
+<img src='/image/2012/02/38120908-ScreenHunter_43_20120220.jpg'>
+</div>
+
+

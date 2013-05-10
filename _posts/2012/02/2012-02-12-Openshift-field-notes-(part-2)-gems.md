@@ -33,3 +33,15 @@ Please be patient while installation is running. On complete type the following 
 $ gem install rhc
 
 you are now done with RHC tools installation
+
+
+<div class='p_embed p_image_embed'>
+<img src='/image/2012/02/37836295-ScreenHunter_15_20120211.jpg'>
+<img src='/image/2012/02/37836291-ScreenHunter_13_20120211.jpg'>
+<img src='/image/2012/02/37836296-ScreenHunter_16_20120211.jpg'>
+<img src='/image/2012/02/37836297-ScreenHunter_17_20120211.jpg'>
+<img src='/image/2012/02/37836298-ScreenHunter_18_20120211.jpg'>
+<img src='/image/2012/02/37836299-ScreenHunter_19_20120211.jpg'>
+<img src='/image/2012/02/37836302-ScreenHunter_27_20120211.jpg'>
+<img src='/image/2012/02/37836301-ScreenHunter_26_20120211.jpg'>
+</div>

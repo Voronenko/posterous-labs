@@ -24,3 +24,14 @@ If you are advanced unix user, you can also install vi and other utilities you a
 For basic file editing far is enough (everything resides on NTFS)
 
 While dependencies are being downloaded, you have enough time for a coffee (especially on ADSL connection)
+
+<div class='p_embed p_image_embed'>
+<img src='/image/2012/02/37833989-ScreenHunter_02_20120211.jpg'>
+<img src='/image/2012/02/37834000-ScreenHunter_05_20120211.jpg'>
+<img src='/image/2012/02/37833997-ScreenHunter_03_20120211.jpg'>
+<img src='/image/2012/02/37834007-ScreenHunter_10_20120211.jpg'>
+<img src='/image/2012/02/37834017-ScreenHunter_12_20120211.jpg'>
+<img src='/image/2012/02/37834004-ScreenHunter_09_20120211.jpg'>
+<img src='/image/2012/02/37834011-ScreenHunter_11_20120211.jpg'>
+</div>
+
