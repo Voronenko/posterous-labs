@@ -75,35 +75,55 @@ Let us convert it to 6 digit sequence:
 
  Step А: convert into hex  array
 
-<pre><code>
-Array ( [0] => af [1] => 2b [2] => 88 [3] => 04 [4] => 8d [5] => c8 [6] => 97 [7] => 9b [8] => 52 [9] => 8a [10] => f4 [11] => e3 [12] => 70 [13] => 85 [14] => 06 [15] => 1d [16] => 88 [17] => aa [18] => aa [19] => a5 )
-</code></pre>
+<pre>
+Array (
+  [0] => af [1] => 2b [2] => 88 [3] => 04 [4] => 8d
+  [5] => c8 [6] => 97 [7] => 9b [8] => 52 [9] => 8a
+
+  [10] => f4 [11] => e3 [12] => 70 [13] => 85 [14] => 06
+  [15] => 1d [16] => 88 [17] => aa [18] => aa [19] => a5
+  )
+</pre>
+
 Step B Transform each hex in the array to it's decimal form
 
-<pre><code >
-Array ( [0] => 175 [1] => 43 [2] => 136 [3] => 4 [4] => 141 [5] => 200 [6] => 151 [7] => 155 [8] => 82 [9] => 138 [10] => 244 [11] => 227 [12] => 112 [13] => 133 [14] => 6 [15] => 29 [16] => 136 [17] => 170 [18] => 170 [19] => 165 )
-</code></pre>
+<pre>
+Array (
+[0] => 175 [1] => 43 [2] => 136 [3] => 4 [4] => 141
+[5] => 200 [6] => 151 [7] => 155 [8] => 82 [9] => 138
+[10] => 244 [11] => 227 [12] => 112 [13] => 133 [14] => 6
+[15] => 29 [16] => 136 [17] => 170 [18] => 170 [19] => 165
+)
+</pre>
 
 Step C  Take 19-th array element (in this case 165)
 
 and perform bitwise operator & on mask 0xf   - we receive 5 for current example.
 
-<pre><code >
+<pre>
 
-(hmac_result[offset+0] & 0x7f) << 24 = 200& 0x7f) << 24 = 11001000&100100111<< 24 = 1001000 << 24 =1001000000000000000000000000000=1207959552
+(
+ hmac_result[offset+0] & 0x7f) << 24 = 200& 0x7f) << 24 =
+ 11001000&100100111<< 24 =
+ 1001000 << 24 =1001000000000000000000000000000=
+ 1207959552
 
-(hmac_result[offset+1] & 0xff) << 16 = 151& 0xff) << 16 = 10010111&1001010101<<
-    16=10111 << 16 = 100101110000000000000000
+(hmac_result[offset+1] & 0xff) << 16 = 151& 0xff) << 16 =
+10010111&1001010101<< 16 =
+10111 << 16 =
+100101110000000000000000
 
-(hmac_result[offset+2] & 0xff) << 8 = 155& 0xff) << 8 = 10011011&1001010101<< 8=10111
-    << 16 = 1001101100000000
+(hmac_result[offset+2] & 0xff) << 8 = 155& 0xff) << 8 =
+10011011&1001010101<< 8=
+10111 << 16 =
+1001101100000000
 
 (hmac_result[offset+3] & 0xff) = 82& 0xff) = 1010010&1001010101=10111 << 16 =1010010
 
 1001000000000000000000000000000 | 100101110000000000000000 | 1001101100000000 | 1010010 =
 1001000100101111001101101010010 = 1217895250
 
-</code></pre>
+</pre>
 
 
  Step D: take the result
@@ -125,7 +145,7 @@ b) PHP HMAC hash implementation from community feedbacks on http://php.net/manua
 
 in a result proof of concept implementation of RFC6238 have born: rfc6238.php which contains helper class TokenAuth6238 with several useful functions
 
-Generating a secret
+Generating a secret.
 
 
 A secret is used to provide a base for your application and the device generating the code to validate the user's identity. The secret is important and should be transfered over a secured channel. If attacker will get access to the secret, it's possible to generate the verification code and get around the security procedure.
@@ -144,13 +164,14 @@ Install the application and create new account by entering the a code. Name your
 
 Now you can see on you smartphone 6 character long password that allows you to validate the user's identity
 
- Validating the integrity
+
+Validating the integrity
 
 Now that we have the secret and the smartphone is generating the verification code, let's try to validate the it.
 
 <pre><code class="php">
 
-<?php require_once("rfc6238.php");
+require_once("rfc6238.php");
 $secretkey = 'GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ';  //your secret code
 $currentcode = '571427';  //code to validate, for example received from device
 
