@@ -6,50 +6,54 @@ tags : [algorythms, mongodb, nosql, tree]
 ---
 
 #Introduction
+In a real life almost any project deals with the tree structures. Different kinds of taxonomies, site structures etc require modelling of hierarhy relations. In this article I will illustrate using first three of five typical approaches of operateting with hierarchy data on example of the MongoDB database. Those approaches are:
 
 
-In a real life almost any project deals with the tree structures. Different kinds of taxonomies, site structures etc require modelling of hierarchy relations. In this article I will illustrate using last two of five typical approaches of operating with hierarchy data on example of the MongoDB database. Please refer to fist article from the series to read about first three ones.  Those approaches are:
 
--Model Tree Structures with Child References
 
--Model Tree Structures with Parent References
 
--Model Tree Structures with an Array of Ancestors
+- Model Tree Structures with Child References
+- Model Tree Structures with Parent References
+- Model Tree Structures with an Array of Ancestors
+- Model Tree Structures with Materialized Paths
+- Model Tree Structures with Nested Sets
 
--Model Tree Structures with Materialized Paths
 
--Model Tree Structures with Nested Sets
+
 
 Note: article is inspired by another article 'Model Tree Structures in MongoDB' by 10gen, but does not copy it, but provides additional examples on typical operations with tree management. Please refer for 10gen's article to get more solid understanding of the approach.
 
-
-
 #Background
 As a demo dataset I use some fake eshop goods taxonomy.
+![Tree](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/categories_small.png)
+
+
+#Challenges to address
+In a typical site scenario, we should be able
 
 
 
-##Challenges to address
-In a typical site scenario, we should be able to
+- Operate with tree (insert new node under specific parent, update/remove existing node, move node across the tree)
+- Get path to node (for example, in order to be build the breadcrumb section)
+- Get all node descendants (in order to be able, for example, to select goods from more general category, like 'Cell Phones and Accessories' which should include goods from all
 
-Operate with tree (insert new node under specific parent, update/remove existing node, move node across the tree)
-Get path to node (for example, in order to be build the breadcrumb section)
-Get all node descendants (in order to be able, for example, to select goods from more general category, like 'Cell Phones and Accessories' which should include goods from all subcategories.
 On each of the examples below we:
 
-Add new node called 'LG' under electronics
-Move 'LG' node under Cell_Phones_And_Smartphones node
-Remove 'LG' node from the tree
-Get child nodes of Electronics node
-Get path to 'Nokia' node
-Get all descendants of the 'Cell_Phones_and_Accessories' node
+
+
+- Add new node called 'LG' under electronics
+- Move 'LG' node under Cell_Phones_And_Smartphones node
+- Remove 'LG' node from the tree
+- Get child nodes of Electronics node
+- Get path to 'Nokia' node
+- Get all descendants of the 'Cell_Phones_and_Accessories' node
 
 
 Please refer to image above for visual representation.
 
 #Tree structure using Materialized Path
 For each node we store (ID, PathToNode)
-
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/PathReference.jpg)
 
 
 Approach looks similar to storing array of ancestors, but we store a path in form of string instead. In example above I intentionally use comma(,) as a path elements divider in order to keep regular expression simpler.
@@ -131,9 +135,11 @@ db.categoriesAAO.ensureIndex( { path: 1 } )
 #Tree structure using Nested Sets
 For each node we store (ID, left, right).
 
-
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/NestedSetsReference.jpg)
 
 Left field also can be treated as an order field
+
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/NestedSets_small.png)
 
 ##Adding new node
  Please refer to image above. Assume, we want to insert LG node after shop_top_products(14,23).
@@ -332,6 +338,7 @@ And, in case if you were so patient to read the article till this section, bonus
 #Tree structure using combination of Nested Sets and classic Parent reference with order approach
   For each node we store (ID, Parent, Order,left, right).
 
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/NestedSetsReference_combined.jpg)
 
 
  Left field also is treated as an order field, so we could omit order field. But from other hand

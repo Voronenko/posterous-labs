@@ -36,7 +36,7 @@ Example of use:  you navigate to site that is built using one of specified above
 This is easy to use tool that can be used by developer - to evaluate website logic, someone else page coding approach, etc I believe this is must have bookmarklet for every web developer.
 
 #Links
-Author's page for the bookmarklet: http://www.sprymedia.co.uk/article/Visual+Event+2
+Author's page for the bookmarklet: <http://www.sprymedia.co.uk/article/Visual+Event+2>
 
- Source on Github  https://github.com/DataTables/VisualEvent
+ Source on Github  <https://github.com/DataTables/VisualEvent>
 

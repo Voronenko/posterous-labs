@@ -11,11 +11,11 @@ In a real life almost any project deals with the tree structures. Different kind
 
 
 
--Model Tree Structures with Child References
--Model Tree Structures with Parent References
--Model Tree Structures with an Array of Ancestors
--Model Tree Structures with Materialized Paths
--Model Tree Structures with Nested Sets
+- Model Tree Structures with Child References
+- Model Tree Structures with Parent References
+- Model Tree Structures with an Array of Ancestors
+- Model Tree Structures with Materialized Paths
+- Model Tree Structures with Nested Sets
 
 
 
@@ -24,7 +24,7 @@ Note: article is inspired by another article 'Model Tree Structures in MongoDB' 
 
 #Background
 As a demo dataset I use some fake eshop goods taxonomy.
-
+![Tree](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/categories_small.png)
 
 
 #Challenges to address
@@ -32,28 +32,27 @@ In a typical site scenario, we should be able
 
 
 
-Operate with tree (insert new node under specific parent, update/remove existing node, move node across the tree)
-Get path to node (for example, in order to be build the breadcrumb section)
-Get all node descendants (in order to be able, for example, to select goods from more general category, like 'Cell Phones and Accessories' which should include goods from all subcategories.
-
+- Operate with tree (insert new node under specific parent, update/remove existing node, move node across the tree)
+- Get path to node (for example, in order to be build the breadcrumb section)
+- Get all node descendants (in order to be able, for example, to select goods from more general category, like 'Cell Phones and Accessories' which should include goods from all
 
 On each of the examples below we:
 
 
 
--Add new node called 'LG' under electronics
--Move 'LG' node under Cell_Phones_And_Smartphones node
--Remove 'LG' node from the tree
--Get child nodes of Electronics node
--Get path to 'Nokia' node
--Get all descendants of the 'Cell_Phones_and_Accessories' node
+- Add new node called 'LG' under electronics
+- Move 'LG' node under Cell_Phones_And_Smartphones node
+- Remove 'LG' node from the tree
+- Get child nodes of Electronics node
+- Get path to 'Nokia' node
+- Get all descendants of the 'Cell_Phones_and_Accessories' node
 
 
 Please refer to image above for visual representation.
 
 #Tree structure with parent reference
 This is most commonly used approach. For each node we store (ID, ParentReference, Order)
-
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/ParentReference.jpg)
 
 
 ##Operating with tree
@@ -145,7 +144,7 @@ db.categoriesPCO.ensureIndex( { parent: 1, order:1 } )
 
 #Tree structure with childs reference
 For each node we store (ID, ChildReferences).
-
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/ChildReference.jpg)
 
 
 Please note, that in this case we do not need order field, because Childs collection
@@ -258,7 +257,7 @@ db.categoriesCRO.ensureIndex( { childs: 1 } )
 
 #Tree structure using an Array of Ancestors
 For each node we store (ID, ParentReference, AncestorReferences)
-
+![](https://raw.github.com/Voronenko/Storing_TreeView_Structures_WithMongoDB/master/images/AncestorReference.jpg)
 
 
 ##Adding new node
