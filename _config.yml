@@ -84,9 +84,9 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : labscrowenkodotcom
+      short_name : vslabs
     facebook :
-      appid : 123
+      appid : 162880437221833
       num_posts: 5
       width: 580
       colorscheme: light
@@ -98,7 +98,7 @@ JB :
   analytics :
     provider : google 
     google : 
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-29437357-2'
 
 
   # Settings for sharing helper. 
