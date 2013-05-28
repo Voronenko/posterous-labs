@@ -1293,3 +1293,21 @@ li.L7,
 li.L9 {
   background: #eeeeee;
 }
+
+/* ------------------ Pinterest widgets -------------------------- */
+
+.pin-title {
+  font-size: 1em;
+  color: #0000aa;
+  text-decoration: none;
+}
+
+.pin-description {
+  color: #555;
+}
+
+.pin-tag {
+  font-size: 0.9em;
+  color: #18c;
+  text-decoration: none;
+}
