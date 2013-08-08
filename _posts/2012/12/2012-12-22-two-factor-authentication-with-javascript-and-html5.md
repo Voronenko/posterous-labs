@@ -100,32 +100,32 @@ The good thing is that you are not limited in design. You can change look and fe
 
 <pre><code class="html">
 
-<header aria="company logo">
-       <div class="center"><img src="im/logo.gif"/></div>
+&lt;header aria="company logo"&gt;
+       &lt;div class="center"&gt;&lt;img src="im/logo.gif"/&gt;&lt;/div&gt;
 
-    </header>
-    <div id="main" role="main" class="center">
+    &lt;/header&gt;
+    &lt;div id="main" role="main" class="center"&gt;
 
-       <p data-bind="text:token" id="code">LOADING...</p>
+       &lt;p data-bind="text:token" id="code"&gt;LOADING...&lt;/p&gt;
 
-       <p data-bind="text:clue" id="clue">CLUE</p>(<span data-bind="text:existsclue"></span>)
-       <p data-bind="visible:(!existsclue())" id="syncro">
+       &lt;p data-bind="text:clue" id="clue"&gt;CLUE&lt;/p&gt;(&lt;span data-bind="text:existsclue"&gt;&lt;/span&gt;)
+       &lt;p data-bind="visible:(!existsclue())" id="syncro"&gt;
           Please navigate to this link to setup your device!
-       </p>
+       &lt;/p&gt;
 
 
-       <p>
+       &lt;p&gt;
           Debug: cache.swapCache()
-       </p>
+       &lt;/p&gt;
 
-    </div>
+    &lt;/div&gt;
 
 </code></pre>
 
 we are detecting whenever CLUE is present in localstorage, and if not - propose our customer to setup ("Please navigate to this link to setup your device"). In a real scenario we might want person to login using some secure method, but for demo purposes we use simple approach: put clue in the session and display QR code that can be grabbed by client device - i.e. customer needs just to scan QR code in order to get your OTP application configured.
 
 <pre><code class="php">
-
+&lt;?php
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR .'rfc6238/base32static.php');
 session_start();
 $secretcode = '12345678901234567890';
@@ -137,16 +137,16 @@ $url = "http://".$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER["SCRIPT_NAM
 
 
 
-<h1> Please navigate by link below to setup 2 factor auth </h1>
-<img src="setupqrcodeimage.php?PHPSESSID=<?php print $_COOKIE["PHPSESSID"]?>" />
-<br/>
+&lt;h1&gt; Please navigate by link below to setup 2 factor auth &lt;/h1&gt;
+&lt;img src="setupqrcodeimage.php?PHPSESSID=&lt;?php print $_COOKIE["PHPSESSID"]?&gt;" /&gt;
+&lt;br/&gt;
 
 </code></pre>
 This is the same link for debug
 Once link is opened on device using QR Code or in a different way, - application on a device is ready to use.
 
 <pre><code class="html">
-<?php
+&lt;?php
   session_start();
   $secretcode = $_SESSION['secretcode'];
   if (empty($secretcode)) {
@@ -155,23 +155,23 @@ Once link is opened on device using QR Code or in a different way, - application
 
 
   $url = "http://".$_SERVER["HTTP_HOST"].str_replace(basename($_SERVER["SCRIPT_NAME"]),"",$_SERVER["SCRIPT_NAME"])."index.html";
-?>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="2;url=<?php print $url?>">
-    <script type="text/javascript">
+?&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="refresh" content="2;url=&lt;?php print $url?&gt;"&gt;
+    &lt;script type="text/javascript"&gt;
         if (!window.localStorage) {
            alert('Sorry! this device is not supported');
         }
 
-        localStorage.setItem('CLUE', '<?php print $secretcode?>');
+        localStorage.setItem('CLUE', '&lt;?php print $secretcode?&gt;');
         alert(localStorage.getItem('CLUE'));
-    </script>
-  </head>
-  <body>
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
     If this page did not redirect you, press here
-  </body>
-</html>
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 
 #Offline mode
@@ -182,7 +182,7 @@ when we make use of another html5 technology: offline cache https://developer.mo
 In real scenario you might want manifest file to be compact, but again for purposes of demo let's include all project scripts into offline mode
 
 <pre><code class="html">
-<?php
+&lt;?php
   header('Content-Type: text/cache-manifest');
   echo "CACHE MANIFEST\n";
 
@@ -190,10 +190,10 @@ In real scenario you might want manifest file to be compact, but again for purpo
 
   $dir = new RecursiveDirectoryIterator(".");
   foreach(new RecursiveIteratorIterator($dir) as $file) {
-    if ($file->IsFile() &&
+    if ($file-&gt;IsFile() &&
        ($file != "./appcache.php") &&
        (pathinfo($file, PATHINFO_EXTENSION)!='appcache') &&
-       (substr($file->getFilename(), 0, 1) != ".")
+       (substr($file-&gt;getFilename(), 0, 1) != ".")
        )
     {
       echo $file . "\n";
@@ -202,7 +202,7 @@ In real scenario you might want manifest file to be compact, but again for purpo
   }
   echo "# Hash: " . md5($hashes) . "\n";
 
-?>
+?&gt;
 </code></pre>
 
 #Code in action
