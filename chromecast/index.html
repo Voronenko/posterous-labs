@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-cast-api-enabled="true">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
       <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond.min.js"></script>
     <![endif]-->
-    <script src="assets/js/require.js"></script>
+    <script data-main="assets/js/main.js" src="assets/js/require.js"></script>
   </head>
 
   <body>
@@ -42,7 +42,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="./">On</a></li>
+            <li class="active" data-bind="text:ActivityStatus"></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -63,5 +63,18 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery-1.10.2.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        var appConfig = {
+          playlist: '/chromecast/assets/data/playlist.json'
+        };
+
+        require(["c/app"], function(app){
+            app.init(appConfig).done(app.run);
+        })
+    </script>
+
   </body>
 </html>
