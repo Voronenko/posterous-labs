@@ -14,7 +14,7 @@
         "author":"Slavko",
         "video":{
            "content":{
-              "mp4":"http://media.ch9.ms/ch9/7292/eaecfb42-8a07-4c23-bea6-00fe30d07292/ASPMVC4M01_high.mp4"
+              "mp4":"http://commondatastorage.googleapis.com/gtv-videos-bucket/ED_1280.mp4"
            }
         }
        },
@@ -23,7 +23,7 @@
          "author":"Slavko",
          "video":{
             "content":{
-               "mp4":"http://media.ch9.ms/ch9/ed19/2a2d86be-41fa-4255-bdcf-442764bbed19/ASPMVC4M02_high.mp4"
+               "mp4":"http://commondatastorage.googleapis.com/gtv-videos-bucket/reel_2012_1280x720.mp4"
             }
          }
         },
@@ -32,16 +32,7 @@
          "author":"Slavko",
          "video":{
             "content":{
-               "mp4":"http://media.ch9.ms/ch9/13f9/d67d6807-15d8-474c-b90e-b3f288f513f9/ASPMVC4M03_high.mp4"
-            }
-         }
-        },
-        {"id":"4",
-         "position":1,
-         "author":"Slavko",
-         "video":{
-            "content":{
-               "mp4":"http://media.ch9.ms/ch9/e581/29d52fee-daa2-410b-ac2e-2439ab19e581/ASPMVC4M04_high.mp4"
+               "mp4":"http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4"
             }
          }
         }

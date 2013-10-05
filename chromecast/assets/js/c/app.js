@@ -26,7 +26,7 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
 
 
          SenderPageModel.prototype.playOnChromeCast = function(item){
-             chromecast.play(item.mp4)
+             chromecast.play(item.content.mp4)
                  .done(function(event){alert('played!');})
                  .fail(function(event){alert('failure')});
          }
