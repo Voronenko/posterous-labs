@@ -55,6 +55,23 @@
             The sender may be a phone or tablet running on Android or iOS, or it may be a laptop computer running Chrome OS, Mac OS, or Windows. A sender application running on the sender device uses the Google Cast API appropriate to its operating system to discover and transmit to the receiver application running on the receiver device. You can use the sender APIs to enable your Android, iOS, or Chrome app to send content to a large display.</p>
       </div>
 
+<div class="btn-group">
+  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
+    Casting On <span data-bind="text:selectedDevice().name"></span> <span data-bind="text:selectedDevice.id"></span> <span data-bind="text:selectedDevice.ipAddress"></span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" data-bind="foreach:devices">
+    <li data-bind="click:$parent.selectCastingDevice">
+        <strong data-bind="text:name"></strong>(<span data-bind="text:ipAddress"></span>/<span data-bind="text:id"></span>)
+    </li>
+  </ul>
+</div>
+
+      <div>
+          <ul data-bind="foreach:PlayList" class="nav nav-pills nav-stacked">
+              <li><a data-bind="attr:{href:content.mp4}, text:content.mp4, click:$parent.playOnChromeCast"></a></li>
+          </ul>
+      </div>
+
     </div> <!-- /container -->
 
 
