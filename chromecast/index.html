@@ -60,7 +60,7 @@
     Casting On <span data-bind="text:selectedDevice().name"></span> <span data-bind="text:selectedDevice.id"></span> <span data-bind="text:selectedDevice.ipAddress"></span> <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" data-bind="foreach:devices">
-    <li data-bind="click:$parent.selectCastingDevice">
+    <li data-bind="click:$parent.setCastingDevice">
         <strong data-bind="text:name"></strong>(<span data-bind="text:ipAddress"></span>/<span data-bind="text:id"></span>)
     </li>
   </ul>
@@ -68,7 +68,7 @@
 
       <div>
           <ul data-bind="foreach:PlayList" class="nav nav-pills nav-stacked">
-              <li><a data-bind="attr:{href:content.mp4}, text:content.mp4, click:$parent.playOnChromeCast"></a></li>
+              <li data-bind="text:content.mp4, click:$parent.playOnChromeCast"></li>
           </ul>
       </div>
 

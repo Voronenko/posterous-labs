@@ -6,7 +6,8 @@ define(["knockout-2.3.0","jquery"], function(ko,$) {
 
   var defaultCastAPIConsumer = {
       applicationID:'',
-      setReceivers: function(){}
+      setReceivers: function(){},
+      getCastingDevice: function(){}
   };
 
 
@@ -31,10 +32,38 @@ function onReceiverList(list) {
     castAPIConsumer.setReceivers(list);
 }
 
+/* ------------------------------- */
+function castMedia(mediaurl) {
+
+          var result = new $.Deferred();
+          var currentReceiver = castAPIConsumer.getCastingDevice();
+          var launchRequest = new cast.LaunchRequest(castAPIConsumer.applicationID, currentReceiver);
+          launchRequest.parameters = '';
+
+          var loadRequest = new cast.MediaLoadRequest(mediaurl);
+          loadRequest.autoplay = true;
+
+          castApi.launch(launchRequest, function(status) {
+            if (status.status == 'running') {
+              castApi.loadMedia(status.activityId,
+                                      loadRequest,
+                                      result.resolve);
+            } else {
+                result.reject(status);
+            }
+          });
+
+         return result;
+
+        }
+
+
 
         return {
             ready: function(callback){CastAPIReady.done(callback)},
-            init: initializeCastApiinitializeCastApi
+            init: initializeCastApiinitializeCastApi,
+
+            play:castMedia
         }
     }
 );

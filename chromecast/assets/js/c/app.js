@@ -26,13 +26,19 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
 
 
          SenderPageModel.prototype.playOnChromeCast = function(item){
-             alert(JSON.stringify(item));
+             chromecast.play(item.mp4)
+                 .done(function(event){alert('played!');})
+                 .fail(function(event){alert('failure')});
          }
 
-        SenderPageModel.prototype.selectCastingDevice = function(device){
-            debugger;
+        SenderPageModel.prototype.setCastingDevice = function(device){
             model.selectedDevice(device);
         }
+
+        SenderPageModel.prototype.getCastingDevice = function(){
+            return model.selectedDevice();
+        };
+
 
 
 
@@ -40,7 +46,6 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
             model.devices(receivers);
             if (receivers.length > 0){
                 model.selectedDevice(model.devices()[0]);
-                debugger;
             }
         };
 
@@ -56,7 +61,7 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
             ko.applyBindings(model);
             chromecast.ready(bindChromecast);
             return result;
-        };
+        }
 
         function bindChromecast(){
             chromecast.init(model);
