@@ -62,7 +62,6 @@ function castMedia(mediaurl) {
         return {
             ready: function(callback){CastAPIReady.done(callback)},
             init: initializeCastApiinitializeCastApi,
-
             play:castMedia
         }
     }
