@@ -40,6 +40,11 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
         };
 
 
+        SenderPageModel.prototype.getKnownApps = function(){
+            chromecast.getWhiteListedApps().done(function(apps){
+                debugger;
+            });
+        }
 
 
         SenderPageModel.prototype.setReceivers = function(receivers){
@@ -68,7 +73,7 @@ define(["knockout-2.3.0","jquery","c/cast.sender"], function(ko,$,chromecast) {
         }
 
         function run(data) {
-
+            model.getKnownApps();
             model.parsePlayList(data);
 
         }
